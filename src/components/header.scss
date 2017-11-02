@@ -1,0 +1,40 @@
+.navigation {
+  height: 60px;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  box-shadow: inset 0px 0px 1px 0px;
+
+  ul {
+    height: 100%;
+    width: 25%;
+    margin: 0px;
+    display: flex;
+    justify-content: space-evenly;
+    list-style: none;
+
+
+    li {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+
+      &:hover a {
+        border-bottom: 2px solid #ff6600;
+        padding-bottom: 0px;
+      }
+
+      a {
+        padding-bottom: 3px;
+        text-decoration: none;
+        color: initial;
+      }
+
+      &:active a {
+        border-bottom: 0px;
+      }
+    }
+  }
+}

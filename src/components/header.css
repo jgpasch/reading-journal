@@ -1,0 +1,28 @@
+.navigation {
+  height: 60px;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  box-shadow: inset 0px 0px 1px 0px; }
+  .navigation ul {
+    height: 100%;
+    width: 25%;
+    margin: 0px;
+    display: flex;
+    justify-content: space-evenly;
+    list-style: none; }
+    .navigation ul li {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer; }
+      .navigation ul li:hover a {
+        border-bottom: 2px solid #ff6600;
+        padding-bottom: 0px; }
+      .navigation ul li a {
+        padding-bottom: 3px;
+        text-decoration: none;
+        color: initial; }
+      .navigation ul li:active a {
+        border-bottom: 0px; }

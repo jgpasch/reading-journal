@@ -1,0 +1,4 @@
+.book-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  width: 1080px; }
