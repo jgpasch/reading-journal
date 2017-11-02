@@ -8,7 +8,7 @@ export default class Header extends Component {
       <div className="navigation">
         <ul>
           <li>
-            <Link to="/dashboard">Dashboard</Link>
+            <Link to="/">Dashboard</Link>
           </li>
           <li>
           <Link to="/wishlist">Wishlist</Link>
