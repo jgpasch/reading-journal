@@ -1,0 +1,5 @@
+.create-form hr {
+  display: none; }
+
+.create-form .dater div:first-child {
+  height: 100%; }

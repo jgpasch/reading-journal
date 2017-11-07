@@ -7,6 +7,7 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 import FirebaseSetup from './firebaseSetup';
 import reducers from './reducers/index_reducers';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './index.css';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';

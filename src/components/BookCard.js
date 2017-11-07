@@ -15,7 +15,7 @@ class BookCard extends Component {
     return (
       <Card style={styles.cardStyle}>
         <CardHeader style={styles.headerStyle}>
-          <p>{book.title}</p>
+          <p>{book.title}{book.audiobook ? <span style={{paddingLeft: '5px'}} className="glyphicon glyphicon-headphones"></span> : ''}</p>
         </CardHeader>
         <CardText>
           <p>Pages: <span style={styles.bookInfoStyles}>{book.pages}</span></p>

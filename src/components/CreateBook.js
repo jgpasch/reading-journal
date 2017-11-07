@@ -2,8 +2,11 @@ import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form';
 import { connect } from 'react-redux';
 import RaisedButton from 'material-ui/RaisedButton';
+import DatePicker from 'material-ui/DatePicker';
 import _ from 'lodash';
 import { createBook } from '../actions/index_actions';
+import './createbook.css';
+
  class CreateBook extends Component {
 
   componentDidMount() {
@@ -22,7 +25,7 @@ import { createBook } from '../actions/index_actions';
      return (
       <div className="row" style={styles.wrapperStyle}>
         <div className="col-xs-12 col-md-6 col-md-offset-3">
-          <form style={styles.formStyle} onSubmit={handleSubmit(this.onSubmit.bind(this))}>
+          <form className="create-form" style={styles.formStyle} onSubmit={handleSubmit(this.onSubmit.bind(this))}>
             <Field
               label="Book Title"
               name="title"
@@ -37,7 +40,7 @@ import { createBook } from '../actions/index_actions';
               <Field
               label="Start Date"
               name="start_date"
-              component={this.renderField}
+              component={this.renderDateField}
               />
               <Field
               label="Finish Date"
@@ -70,6 +73,21 @@ import { createBook } from '../actions/index_actions';
       </div>
     )
    }
+
+   renderDateField(field) {
+    const { meta: { touched, error }} = field;
+    const divCName = `form-group ${touched && error ? 'has-danger' : ''}`
+
+    return (
+      <div className={divCName} style={{height: '80px'}}>
+        <label className="control-label" style={styles.labelStyle}>{field.label}</label>
+        <DatePicker className="form-control focused-input dater" style={styles.inputStyle} />
+        <div className="text-help" style={styles.errorStyle}>
+          {field.meta.touched && field.meta.touched && <span> {field.meta.error} </span> }
+        </div>
+      </div>
+    )
+   }
  }
 
 function validate(values) {
@@ -91,7 +109,8 @@ const styles = {
   height: '100%',
   display: 'flex',
   // justifyContent: 'center',
-  alignItems: 'center'
+  alignItems: 'center',
+  flex: '1'
   },
   labelStyle: {
     textSpacing: '.6px',

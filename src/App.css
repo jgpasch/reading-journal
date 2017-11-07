@@ -1,4 +1,14 @@
+html {
+  height: 100%; }
+
+body {
+  height: calc(100% - 60px); }
+
+#root {
+  height: 100%; }
+
 .content-wrapper {
+  height: 100%;
   margin-top: 60px;
   display: flex;
   justify-content: center; }
