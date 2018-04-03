@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import RaisedButton from 'material-ui/RaisedButton';
 import DatePicker from 'material-ui/DatePicker';
 import _ from 'lodash';
+import * as moment from 'moment';
 import { createBook } from '../actions/index_actions';
 import './createbook.css';
 
@@ -14,9 +15,10 @@ import './createbook.css';
   }
 
   onSubmit(values) {
+    console.log(values);
     this.props.createBook(values);
     this.props.reset();
-    this.firstInput.focus();
+    console.log(this.firstInput);
   }
 
   render() {
@@ -45,7 +47,7 @@ import './createbook.css';
               <Field
               label="Finish Date"
               name="finish_date"
-              component={this.renderField}
+              component={this.renderDateField}
               />
             <RaisedButton type="submit" label="Save" primary />
           </form>
@@ -75,13 +77,16 @@ import './createbook.css';
    }
 
    renderDateField(field) {
+     console.log(field);
     const { meta: { touched, error }} = field;
     const divCName = `form-group ${touched && error ? 'has-danger' : ''}`
 
+    const iden = field.label === "Start Date" ? 'start' : 'finish'
+
     return (
-      <div className={divCName} style={{height: '80px'}}>
+      <div className={divCName} style={{height: '80px', position: 'relative'}}>
         <label className="control-label" style={styles.labelStyle}>{field.label}</label>
-        <DatePicker className="form-control focused-input dater" style={styles.inputStyle} />
+        <DatePicker className="form-control focused-input dater" id={iden} style={styles.inputStyle} onChange={(event, value) => field.input.onChange(moment(value).format('M/DD/YY'))} autoOk formatDate={(date) => moment(date).format('M/DD/YY')} onFocus={function() { document.getElementById(this.id).click(); }} />
         <div className="text-help" style={styles.errorStyle}>
           {field.meta.touched && field.meta.touched && <span> {field.meta.error} </span> }
         </div>
@@ -92,6 +97,7 @@ import './createbook.css';
 
 function validate(values) {
   let errors = {};
+  console.log('do i ever run');
 
   const fields = {
     title: 'book title',
@@ -128,11 +134,20 @@ const styles = {
   inputStyle: {
     border: 'none',
     borderBottomColor: '#F4F9FB',
-    // borderBottomRightRadius: '4px',
-    // borderBottomLeftRadius: '4px',
     backgroundColor: 'rgb(244,249,251)',
     boxShadow: '0px 2px 5px 0px #E6E9EC',
     borderColor: 'rgb(80,80,80)'
+  },
+  cancelDateStyles: {
+    position: 'absolute',
+    right: '5px',
+    top: '29px',
+    borderRadius: '12.5px',
+    padding: '1px',
+    width: '25px',
+    height: '25px',
+    cursor: 'pointer',
+    textAlign: 'center'
   }
 }
 
@@ -147,7 +162,6 @@ function checkForEmpty(values, fields, errors) {
 
 export default reduxForm({
   form: 'CreateForm',
-  // validate
 })(
   connect(null, { createBook })(CreateBook)
 );

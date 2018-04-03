@@ -23,10 +23,20 @@ class BookCard extends Component {
           <p>Finished:  <span style={styles.bookInfoStyles}>{book.finish_date ? book.finish_date : 'In Progress'}</span></p>
         </CardText>
         <CardActions>
-          {book.finish_date ? '' : <div style={{textAlign: 'center', marginRight: '0px'}}><RaisedButton label="Finished" onClick={this.finished} primary/></div>}
+          {this.renderActions(book)}
         </CardActions>
       </Card>
     )
+  }
+
+  renderActions(book) {
+    if (book.pause_start) {
+      return <div style={{textAlign: 'center', marginRight: '0px'}}><RaisedButton label="Continue Reading"/></div>;
+    } else if (!book.finish_date) {
+      return <div style={{textAlign: 'center', marginRight: '0px'}}><RaisedButton label="Finished" onClick={this.finished} primary/></div>;
+    } else {
+      return '';
+    }
   }
 }
 

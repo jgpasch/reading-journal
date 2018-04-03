@@ -26,11 +26,12 @@ export function fetchBooks() {
 
 
 export function createBook(values) {
+  console.log(values);
   return dispatch => {
     booksRef.push()
       .set(values, (err) => {
         if (err) {
-          console.log(err)
+          console.log(err);
           throw new Error();
         }
         dispatch({

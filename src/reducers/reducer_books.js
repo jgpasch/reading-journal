@@ -4,7 +4,7 @@ export default function(state = [], action) {
   console.log(action.type);
   switch (action.type) {
     case FETCH_BOOKS:
-      console.log('here');
+      console.log('here ');
       console.log(action.payload);
       return action.payload;
 

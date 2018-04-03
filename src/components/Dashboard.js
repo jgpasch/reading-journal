@@ -14,9 +14,12 @@ class Dashboard extends Component {
   render() {
     this.sortBooks();
     return (
-      <div className="book-wrapper">
-        {this.showBooks()}
-        <div style={styles.clearDiv}></div>
+      <div>
+        <div>{this.props.books.length} books read</div>
+        <div className="book-wrapper">
+          {this.showBooks()}
+          <div style={styles.clearDiv}></div>
+        </div>
       </div>
     );
   }

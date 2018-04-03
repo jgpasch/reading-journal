@@ -2,4 +2,18 @@
   display: none; }
 
 .create-form .dater div:first-child {
-  height: 100%; }
+  height: 24px !important; }
+
+.create-form .focused-input {
+  transition: all 300ms ease-in-out; }
+
+.create-form .focused-input:focus {
+  transition: all 300ms ease-in-out !important;
+  background-color: #fff8e6 !important;
+  box-shadow: 0px 1px 1px 0px #f9c4ad !important; }
+
+.create-form span.remove-date:hover {
+  background-color: #ccc; }
+
+.create-form span.remove-date:active {
+  background-color: #aaa; }
